@@ -1,9 +1,15 @@
 import React from "react";
-import './HomePage.css';
+import './HomePage.scss';
+import videoHomePage from '../../assets/videos/videoHomePage.mp4';
 
 const HomePage = () => {
     return (
         <div className="homepage-container">
+            <div className="video-page">
+                <video autoPlay muted loop>
+                    <source src={videoHomePage} type="video/mp4" />
+                </video>
+            </div>
             <header>
                 <section className="container main-hero-container">
                     {/* <div className="row"> */}

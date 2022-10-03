@@ -1,23 +1,17 @@
 import React, { useState } from "react";
-import './Header.css';
-import videoHomePage from '../../assets/videos/videoHomePage.mp4';
+import './Header.scss';
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
     const [showHide, setShowHide] = useState(false);
     return (
         <div className="hearder-container">
-            <div className="video-page">
-                <video autoPlay muted loop>
-                    <source src={videoHomePage} type="video/mp4" />
-                </video>
-            </div>
-
             <section className="navbar-bg">
                 <nav className="navbar navbar-expand-lg navbar-light">
                     <div className="container">
-                        <a className="navbar-brand" href="#">
+                        <NavLink className="navbar-brand" to="/">
                             Quiz System
-                        </a>
+                        </NavLink>
                         <button className="navbar-toggler"
                             type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent"
@@ -31,16 +25,24 @@ const Header = () => {
                         <div className={`collapse navbar-collapse ${showHide ? "show" : ""}`}>
                             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="#">Home</a>
+                                    <NavLink to='/' className="nav-link" aria-current="page">
+                                        Home
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Users</a>
+                                    <NavLink to='/users' className="nav-link">
+                                        Users
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Admin</a>
+                                    <NavLink to='/admin' className="nav-link">
+                                        Admin
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Contact</a>
+                                    <NavLink to='/contact' className="nav-link">
+                                        Contact
+                                    </NavLink>
                                 </li>
                             </ul>
                             <form className="d-flex">

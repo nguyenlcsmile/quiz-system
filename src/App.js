@@ -1,6 +1,6 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import Header from "./components/Header/Header";
-import HomePage from "./components/Home/HomePage";
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
 
         </div>
         <div className="app">
-          <HomePage />
+          <Outlet />
         </div>
       </div>
     </div>
