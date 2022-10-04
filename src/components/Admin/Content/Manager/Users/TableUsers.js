@@ -2,7 +2,7 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 
 const TableUsers = (props) => {
-    const { listUsers } = props;
+    const { listUsers, handleViewUser } = props;
 
     return (
         <section>
@@ -31,7 +31,10 @@ const TableUsers = (props) => {
                                                         <td className="text-bold-500">{user.email}</td>
                                                         <td className="text-bold-500">{user.role}</td>
                                                         <td className="text-bold-500 d-flex">
-                                                            <button className='btn btn-secondary'>View</button>
+                                                            <button className='btn btn-secondary'
+                                                                onClick={() => handleViewUser(user)}>
+                                                                View
+                                                            </button>
                                                             <button className='btn btn-warning mx-4'>Update</button>
                                                             <button className='btn btn-danger'>Delete</button>
                                                         </td>

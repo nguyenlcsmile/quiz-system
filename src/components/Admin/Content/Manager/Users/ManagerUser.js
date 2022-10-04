@@ -3,12 +3,15 @@ import TableUsers from './TableUsers';
 import { getAllUsers } from '../../../../../services/apiServices';
 import { useEffect, useState } from 'react';
 import ModalCreateUser from './ModalCreateUser';
+import ModalViewUser from './ModalViewUser';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { NavLink } from 'react-router-dom';
 
 function Manager() {
     const [listUsers, setListUsers] = useState([]);
     const [showModalCreateUser, setShowModalCreateUser] = useState(false);
+    const [showModalViewUser, setShowModalViewUser] = useState(false);
+    const [dataView, setDataView] = useState({});
 
     useEffect(() => {
         fectchListUser();
@@ -19,6 +22,15 @@ function Manager() {
         if (res.EC === 0) {
             setListUsers(res.DT)
         }
+    }
+
+    const handleViewUser = (user) => {
+        setShowModalViewUser(true);
+        setDataView(user);
+    }
+
+    const resetData = () => {
+        setDataView({});
     }
 
     return (
@@ -39,12 +51,20 @@ function Manager() {
                 <div className='table-users'>
                     <TableUsers
                         listUsers={listUsers}
+                        handleViewUser={handleViewUser}
                     />
                 </div>
 
                 <ModalCreateUser
                     show={showModalCreateUser}
                     setShow={setShowModalCreateUser}
+                />
+
+                <ModalViewUser
+                    show={showModalViewUser}
+                    setShow={setShowModalViewUser}
+                    dataView={dataView}
+                    resetData={resetData}
                 />
             </div>
 

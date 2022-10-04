@@ -46,9 +46,11 @@ const Header = () => {
                                 </li>
                             </ul>
                             <form className="d-flex">
-                                <button className="btn btn-style" type="submit">
-                                    Sign in{" "}
-                                </button>
+                                <NavLink to='/login'>
+                                    <button className="btn btn-style" type="submit">
+                                        Sign in{" "}
+                                    </button>
+                                </NavLink>
                                 <button className="btn btn-style btn-style-border" type="submit">
                                     Sign up{" "}
                                 </button>
