@@ -40,22 +40,20 @@
                         color: #25396f;
                     }
 
-                    .sidebar-item {
-                        padding: 0.2rem 1.2rem;
-                        margin: 1.5rem 1rem 1rem;
-                        list-style: none;
-                        width: 85%;
-                        height: 3.8rem;
-                        position: relative;
-                        border-radius: 5px;
-                        cursor: pointer;
-
-                        &.active {
-                            background-color: #435ebe;
+                    .active {
+                        .sidebar-item {
+                            padding: 0.2rem 1.2rem;
+                            margin: 1.2rem 0 1rem;
+                            list-style: none;
+                            width: 90%;
+                            height: 3.8rem;
+                            position: relative;
                             border-radius: 5px;
-                            margin-left: 1rem;
-
+    
                             .sidebar-link {
+                                background-color: #435ebe;
+                                border-radius: 5px;
+                                margin-left: 1rem;
                                 padding: 0.5rem 1rem;
                                 font-size: 1rem;
                                 display: flex;
@@ -81,16 +79,20 @@
                                 }
                             }
                         }
+                    }
 
-                        &:hover {
-                            background-color: #ccc;
-                            border-radius: 5px;
-                            // height: 3.8rem;
-                            margin-left: 1rem;
-                            transition: all 0.5s ease-out;
-                        }
-
+                    .sidebar-item {
+                        padding: 0.2rem 1.2rem;
+                        margin: 1.2rem 0 1rem;
+                        list-style: none;
+                        height: 3.8rem;
+                        width: 90%;
+                        position: relative;
+                        border-radius: 5px;
+    
                         .sidebar-link {
+                            border-radius: 5px;
+                            margin-left: 1rem;
                             padding: 0.5rem 1rem;
                             font-size: 1rem;
                             display: flex;
@@ -100,8 +102,13 @@
                             text-decoration: none;
                             color: #25396f;
                             font-size: 1rem;
-                        }
 
+                            &:hover {
+                                background-color: #ccc;
+                                transition: all 0.5s ease-in-out;
+                            }
+                        }
+    
                         .icon-sidebar {
                             fill: #25396f;
                             color: #25396f;
@@ -109,43 +116,11 @@
                             height: 1.6rem;
                             margin: 0 0.2rem;
                         }
-
+    
                         span {
                             margin-left: 0.8rem;
                             color: #25396f;
                             font-size: 1.6rem;
-                        }
-
-                        .submenu {
-                            list-style: none;
-                            transition: max-height 2s cubic-bezier(0,.55,.45,1);
-                            overflow: hidden;
-                            margin-top: 0.4rem;
-                            
-                            .submenu-item {
-                                margin-bottom: 2rem;
-
-                                .submenu-item-icon {
-                                    font-size: 2.0rem;
-                                    margin-left: -0.6rem;
-                                    margin-right: 1.2rem;
-                                }
-
-                                a {
-                                    display: block;
-                                    margin: 0.8rem 2.2rem;
-                                    color: #25396f;
-                                    font-size: 1.1rem;
-                                    font-weight: 600;
-                                    letter-spacing: .5px;
-                                    transition: all .3s;
-                                    
-                                    &:hover {
-                                        color: #ccc;
-                                    }
-                                }
-                                
-                            }
                         }
                     }
 

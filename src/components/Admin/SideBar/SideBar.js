@@ -3,10 +3,9 @@ import { NavLink } from "react-router-dom";
 import './SideBar.scss';
 import logoReact from '../../../logo.svg';
 import { BiAlignMiddle } from 'react-icons/bi';
-import { IoIosArrowDown, IoIosArrowUp, IoIosArrowRoundForward } from 'react-icons/io';
-import { SideBarItems } from "./SideBarItems";
 import { RiDashboardLine } from 'react-icons/ri';
-import { MdManageAccounts } from 'react-icons/md';
+import { MdManageAccounts, MdQuiz } from 'react-icons/md';
+import { AiFillFolderOpen } from 'react-icons/ai';
 
 const SideBar = () => {
     const [showSubmenu, setShowSubmenu] = useState(false);
@@ -31,79 +30,39 @@ const SideBar = () => {
 
             <div className="sidebar-menu">
                 <ul className="menu">
-                    <li className="sidebar-title">Menu</li>
-                    {SideBarItems.map((item, index) => {
-                        return (
-                            <li className="sidebar-item active" key={index} onClick={() => { item.status && setShowSubmenu(!showSubmenu) }}>
-                                <div className="sidebar-link bd-highlight">
-                                    {item.icon}
-                                    <div className="flex-grow-1 bd-highlight">
-                                        <span>{item.title}</span>
-                                    </div>
-
-                                    <div className="" style={{ fontSize: "1.2rem", display: item.arrow }}>
-                                        {showSubmenu ? <IoIosArrowUp /> : <IoIosArrowDown />}
-                                    </div>
-                                </div>
-                                {item.status &&
-                                    <ul className="submenu" style={{ display: showSubmenu ? '' : 'none' }}>
-                                        <li className="submenu-item">
-                                            <NavLink to='/admins/manager-users'>
-                                                <IoIosArrowRoundForward className="submenu-item-icon" />
-                                                Users
-                                            </NavLink>
-                                        </li>
-                                        <li className="submenu-item">
-                                            <NavLink to='/admins'>
-                                                <IoIosArrowRoundForward className="submenu-item-icon" />
-                                                Quizs
-                                            </NavLink>
-                                        </li>
-                                        <li className="submenu-item">
-                                            <NavLink to='/admins'>
-                                                <IoIosArrowRoundForward className="submenu-item-icon" />
-                                                Questions
-                                            </NavLink>
-                                        </li>
-                                    </ul>
-                                }
-                            </li>
-                        )
-                    })}
-
-                    {/* <li className="sidebar-item" onClick={() => setShowSubmenu(!showSubmenu)}>
-                        <div className="sidebar-link bd-highlight">
-                            <MdManageAccounts className="icon-sidebar" />
-                            <div className="flex-grow-1 bd-highlight">
-                                <span>Manager</span>
+                    <li className="sidebar-title"></li>
+                    <NavLink to='/admins/dashboard'>
+                        <li className="sidebar-item">
+                            <div className="sidebar-link">
+                                <RiDashboardLine className="icon-sidebar" />
+                                <span>Trang chủ</span>
                             </div>
-
-                            <div className="d-flex" style={{ fontSize: "1.2rem" }}>
-                                {showSubmenu ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                        </li>
+                    </NavLink>
+                    <NavLink to='/admins/manager-users'>
+                        <li className="sidebar-item">
+                            <div className="sidebar-link">
+                                <MdManageAccounts className="icon-sidebar" />
+                                <span>Quản lý người dùng</span>
                             </div>
-                        </div>
-
-                        <ul className="submenu" style={{ display: showSubmenu ? '' : 'none' }}>
-                            <li className="submenu-item">
-                                <NavLink to='/admins/manager-users'>
-                                    <IoIosArrowRoundForward className="submenu-item-icon" />
-                                    Users
-                                </NavLink>
-                            </li>
-                            <li className="submenu-item">
-                                <NavLink to='/admins'>
-                                    <IoIosArrowRoundForward className="submenu-item-icon" />
-                                    Quizs
-                                </NavLink>
-                            </li>
-                            <li className="submenu-item">
-                                <NavLink to='/admins'>
-                                    <IoIosArrowRoundForward className="submenu-item-icon" />
-                                    Questions
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </li> */}
+                        </li>
+                    </NavLink>
+                    <NavLink to='/admins/manager-quizs'>
+                        <li className="sidebar-item">
+                            <div className="sidebar-link">
+                                <AiFillFolderOpen className="icon-sidebar" />
+                                <span>Quản lý bài thi</span>
+                            </div>
+                        </li>
+                    </NavLink>
+                    <NavLink to='/admins/manager-questions'>
+                        <li className="sidebar-item">
+                            <div className="sidebar-link">
+                                <MdQuiz className="icon-sidebar" />
+                                <span>Quản lý câu hỏi</span>
+                            </div>
+                        </li>
+                    </NavLink>
                 </ul>
             </div>
         </div>
