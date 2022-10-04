@@ -1,0 +1,55 @@
+.admin-container {
+    .admin-main {
+        .admin-header {
+            .navbar {
+                border-bottom: 0;
+                box-shadow: 0 0 2rem 0 rgb(33 37 41 / 10%);
+                position: relative;
+                display: flex;
+                align-items: center;
+                padding: 0.875rem 1.375rem;
+                background: #fff;
+
+                .sidebar-toggle {
+                    display: none;
+                    margin-right: 1rem;
+
+                    .hamburger {
+                        position: relative;
+                        cursor: pointer;
+                        border-radius: 1px;
+                        height: 24px;
+                        width: 24px;
+                        display: block;
+                    }
+                }
+
+                .navbar-collapse {
+                    display: flex !important;
+                    flex-basis: auto;
+                    flex-grow: 1;
+                    align-items: center;
+
+                    .navbar-nav {
+                        padding-left: 0;
+                        margin-bottom: 0;
+                        margin-right: 4rem;
+                        direction: ltr;
+                        flex-direction: row;
+                        margin-left: auto;
+
+                        a {
+                            background-color: #fff;
+                            color: #000;
+                            font-size: 1.4rem;
+
+                            &:hover {
+                                background-color: #ccc;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

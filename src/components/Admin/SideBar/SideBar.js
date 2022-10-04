@@ -2,27 +2,19 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import './SideBar.scss';
 import logoReact from '../../../logo.svg';
-import { BiAlignMiddle } from 'react-icons/bi';
 import { RiDashboardLine } from 'react-icons/ri';
 import { MdManageAccounts, MdQuiz } from 'react-icons/md';
 import { AiFillFolderOpen } from 'react-icons/ai';
 
 const SideBar = () => {
-    const [showSubmenu, setShowSubmenu] = useState(false);
-
     return (
         <div className="sidebar-wrapper active ps ps--active-y">
             <div className="sidebar-header">
                 <div className="d-flex justify-content-between">
                     <div className="logo">
-                        <NavLink to='/admins' className="d-flex">
+                        <NavLink to='/admins/dashboard' className="d-flex">
                             <img src={logoReact} alt="LogoReact" />
                             <span className="logo-title"> Quiz System</span>
-                        </NavLink>
-                    </div>
-                    <div className="toggle">
-                        <NavLink to='/admins' className="sidebar-hide">
-                            <BiAlignMiddle />
                         </NavLink>
                     </div>
                 </div>

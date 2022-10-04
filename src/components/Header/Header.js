@@ -31,11 +31,11 @@ const Header = () => {
                                 </li>
                                 <li className="nav-item">
                                     <NavLink to='/users' className="nav-link">
-                                        Users
+                                        User
                                     </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink to='/admins' className="nav-link">
+                                    <NavLink to='/admins/dashboard' className="nav-link">
                                         Admin
                                     </NavLink>
                                 </li>
