@@ -7,8 +7,10 @@ import { MdManageAccounts, MdQuiz } from 'react-icons/md';
 import { AiFillFolderOpen } from 'react-icons/ai';
 import { FiLogIn, FiLogOut } from 'react-icons/fi';
 import { GiArchiveRegister } from 'react-icons/gi';
+import { useNavigate } from "react-router-dom";
 
 const SideBar = (props) => {
+    const navigate = useNavigate();
 
     return (
         <div className="sidebar-wrapper active ps ps--active-y">
@@ -38,7 +40,9 @@ const SideBar = (props) => {
                         <li className="sidebar-item">
                             <div className="sidebar-link">
                                 <MdManageAccounts className="icon-sidebar" />
-                                <span>Quản lý người dùng</span>
+                                <span>
+                                    Quản lý người dùng
+                                </span>
                             </div>
                         </li>
                     </NavLink>
@@ -60,11 +64,13 @@ const SideBar = (props) => {
                     </NavLink>
 
                     <li className="sidebar-title">Auth</li>
-                    <NavLink to='/'>
+                    <NavLink to='/login'>
                         <li className="sidebar-item">
                             <div className="sidebar-link">
                                 <FiLogIn className="icon-sidebar" />
-                                <span>Đăng nhập</span>
+                                <span>
+                                    Đăng nhập
+                                </span>
                             </div>
                         </li>
                     </NavLink>

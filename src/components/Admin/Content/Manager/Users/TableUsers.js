@@ -15,8 +15,8 @@ const TableUsers = (props) => {
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th width="20%">USERNAME</th>
-                                            <th width="40%">EMAIL</th>
+                                            <th width="30%">USERNAME</th>
+                                            <th width="30%">EMAIL</th>
                                             <th width="10%">ROLE</th>
                                             <th width="20%">ACTION</th>
                                         </tr>

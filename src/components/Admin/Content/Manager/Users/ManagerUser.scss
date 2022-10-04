@@ -22,8 +22,13 @@
         padding: 0 3.2rem;
         
         .btn-create {
+            background-color: #435ebe;
+            color: #fff;
+            border: none;
+            
             &:hover {
-                background-color: #435ebe;
+                background-color: #ccc;
+                color: #000;
             }
         }
         button {

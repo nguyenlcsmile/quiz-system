@@ -51,9 +51,11 @@ const Header = () => {
                                         Sign in{" "}
                                     </button>
                                 </NavLink>
-                                <button className="btn btn-style btn-style-border" type="submit">
-                                    Sign up{" "}
-                                </button>
+                                <NavLink to='/register'>
+                                    <button className="btn btn-style btn-style-border" type="submit">
+                                        Sign up{" "}
+                                    </button>
+                                </NavLink>
                             </form>
                         </div>
                     </div>

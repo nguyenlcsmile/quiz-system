@@ -1,5 +1,5 @@
-.login-container {
-    .login-header {
+.register-container {
+    .register-header {
         justify-content: flex-end;
         align-items: center;
         padding: 2rem;
@@ -47,7 +47,17 @@
 
                 div {
                     padding: 0.8rem 0;
+                    position: relative;
 
+                    .eye-icon {
+                        font-size: 1.8rem;
+                        position: absolute;
+                        right: 1rem;
+                        top: 4rem;
+                        padding: 1.4rem 1rem;
+                        cursor: pointer;
+                    }
+                    
                     label {
                         font-size: 1.8rem;
                         align-items: center;
@@ -65,13 +75,6 @@
                         font-size: 1.6rem;
                     }
 
-                    .forgot-password {
-                        display: flex;
-                        margin: 1.2rem 0;
-                        a {
-                            font-size: 1.4rem;
-                        }
-                    }
                     .btn-primary {
                         font-size: 2rem;
                         width: 100%;

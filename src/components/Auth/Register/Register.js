@@ -1,28 +1,31 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import ImageLogin from '../../../assets/images/nguyen.jpg';
-import './Login.scss';
+import './Register.scss';
 import { useNavigate } from 'react-router-dom';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
+import { FaUserAlt, FaRegEyeSlash, FaRegEye } from 'react-icons/fa';
 
-const Login = () => {
+const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
 
-    const handleLogin = () => {
-        // alert('me')
+    const handleRegister = () => {
+        alert('me')
     }
 
     return (
-        <div className='login-container d-flex flex-column'>
-            <div className='login-header d-flex'>
-                <span>Don't have an account yet ?</span>
+        <div className='register-container d-flex flex-column'>
+            <div className='register-header d-flex'>
+                <span>Already have an account ?</span>
                 <button className='btn'
-                    onClick={() => navigate('/register')}>
-                    Sign up
+                    onClick={() => navigate('/login')}>
+                    Sign in
                 </button>
             </div>
             <main className="d-flex w-100">
@@ -33,7 +36,7 @@ const Login = () => {
                                 <div className="text-center mt-4">
                                     <h1>Welcome back, Mr.Smile Quiz System</h1>
                                     <p className="lead">
-                                        Sign in to your account to continue
+                                        Sign up to your account to continue
                                     </p>
                                 </div>
                                 <div className="card">
@@ -54,24 +57,50 @@ const Login = () => {
                                                         value={email}
                                                         onChange={(event) => setEmail(event.target.value)} />
                                                 </div>
-                                                <div className="mb-3">
+                                                <div className="mb-3 pass-group">
                                                     <label className="form-label d-flex">
                                                         <RiLockPasswordFill className='label-icon' />
                                                         Password
                                                     </label>
+
+                                                    {showPassword ?
+                                                        <span className='eye-icon'
+                                                            onClick={() => setShowPassword(!showPassword)}
+                                                        >
+                                                            <FaRegEyeSlash />
+                                                        </span>
+                                                        :
+                                                        <span className='eye-icon'
+                                                            onClick={() => setShowPassword(!showPassword)}
+                                                        >
+                                                            <FaRegEye />
+                                                        </span>
+                                                    }
+
                                                     <input className="form-control form-control-lg"
-                                                        type="password" name="password"
+                                                        type={showPassword ? "password" : "text"} name="password"
                                                         placeholder="Enter your password"
                                                         value={password}
                                                         onChange={(event) => setPassword(event.target.value)} />
-                                                    <small className='forgot-password'>
-                                                        <a href="/">Forgot password?</a>
-                                                    </small>
+
                                                 </div>
+
+                                                <div className="mb-3">
+                                                    <label className="form-label d-flex">
+                                                        <FaUserAlt className='label-icon' />
+                                                        Username
+                                                    </label>
+                                                    <input className="form-control form-control-lg"
+                                                        type="text" name="password"
+                                                        placeholder="Enter your username"
+                                                        value={username}
+                                                        onChange={(event) => setUsername(event.target.value)} />
+                                                </div>
+
                                                 <div className="text-center mt-2">
                                                     <NavLink to="/" className="btn btn-lg btn-primary"
-                                                        onClick={() => handleLogin()}>
-                                                        Sign in
+                                                        onClick={() => handleRegister()}>
+                                                        Sign up
                                                     </NavLink>
                                                 </div>
                                                 <div className='back-home text-center'>
@@ -92,4 +121,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default Register;
