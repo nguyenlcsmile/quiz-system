@@ -4,6 +4,7 @@ import { getAllUsers } from '../../../../../services/apiServices';
 import { useEffect, useState } from 'react';
 import ModalCreateUser from './ModalCreateUser';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { NavLink } from 'react-router-dom';
 
 function Manager() {
     const [listUsers, setListUsers] = useState([]);
@@ -22,15 +23,16 @@ function Manager() {
 
     return (
         <>
-            <div className='manager-title'>
-                Quản lý người dùng
+            <div className="manager-title">
+                <div className='row'>
+                    <h3>Quản lý người dùng</h3>
+                </div>
             </div>
 
             <div className='manager-user-content'>
-                <button type="button" className="btn btn-primary"
-                    onClick={() => setShowModalCreateUser(true)}
-                >
-                    <AiOutlinePlus className='mx-2' />
+                <button type="button" className="btn btn-outline-primary btn-create"
+                    onClick={() => setShowModalCreateUser(true)}>
+                    <AiOutlinePlus className='mx-2 fs-2' />
                     Create new user
                 </button>
 

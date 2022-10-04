@@ -1,19 +1,55 @@
-.manager-title {
-    font-size: 2.0rem;
-    font-weight: 600;
-    padding: 2rem 2rem;
-    margin-top: 2.2rem;
-}
 
-.manager-user-content{
-    padding: 0 2rem;
-    
-    button {
-        font-size: 1.6rem;
+.admin-content {
+    display: flex;
+    flex-direction: column;
+    .manager-title {
+        .row {
+            h3 {
+                display: flex;
+                flex: 1;
+                font-size: 2.4rem;
+                font-weight: 700;
+                padding: 2rem 2rem;
+                line-height: 2.0;
+                align-items: center;
+                color: #25396f;
+                margin: 1rem 2rem;
+            }
+        }
     }
+    
+    .manager-user-content {
+        padding: 0 3.2rem;
+        
+        .btn-create {
+            &:hover {
+                background-color: #435ebe;
+            }
+        }
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            padding: 1rem 2rem;
+        }
 
-    .table-users {
-        font-size: 1.4rem;
-        margin-top: 1.8rem;
+        .table-users {
+            padding: 2rem 1rem;
+            margin: 1.0rem 0;
+            font-size: 1.6rem;
+    
+            .card {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                background-color: #fff;
+                border-radius: 0.7rem;
+
+                td {
+                    vertical-align: middle;
+                }
+            }
+        }
     }
 }

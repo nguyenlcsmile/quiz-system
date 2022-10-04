@@ -5,8 +5,11 @@ import logoReact from '../../../logo.svg';
 import { RiDashboardLine } from 'react-icons/ri';
 import { MdManageAccounts, MdQuiz } from 'react-icons/md';
 import { AiFillFolderOpen } from 'react-icons/ai';
+import { FiLogIn, FiLogOut } from 'react-icons/fi';
+import { GiArchiveRegister } from 'react-icons/gi';
 
-const SideBar = () => {
+const SideBar = (props) => {
+
     return (
         <div className="sidebar-wrapper active ps ps--active-y">
             <div className="sidebar-header">
@@ -22,7 +25,7 @@ const SideBar = () => {
 
             <div className="sidebar-menu">
                 <ul className="menu">
-                    <li className="sidebar-title"></li>
+                    <li className="sidebar-title">Menu</li>
                     <NavLink to='/admins/dashboard'>
                         <li className="sidebar-item">
                             <div className="sidebar-link">
@@ -52,6 +55,32 @@ const SideBar = () => {
                             <div className="sidebar-link">
                                 <MdQuiz className="icon-sidebar" />
                                 <span>Quản lý câu hỏi</span>
+                            </div>
+                        </li>
+                    </NavLink>
+
+                    <li className="sidebar-title">Auth</li>
+                    <NavLink to='/'>
+                        <li className="sidebar-item">
+                            <div className="sidebar-link">
+                                <FiLogIn className="icon-sidebar" />
+                                <span>Đăng nhập</span>
+                            </div>
+                        </li>
+                    </NavLink>
+                    <NavLink to='/'>
+                        <li className="sidebar-item">
+                            <div className="sidebar-link">
+                                <GiArchiveRegister className="icon-sidebar" />
+                                <span>Đăng ký</span>
+                            </div>
+                        </li>
+                    </NavLink>
+                    <NavLink to='/'>
+                        <li className="sidebar-item">
+                            <div className="sidebar-link">
+                                <FiLogOut className="icon-sidebar" />
+                                <span>Đăng xuất</span>
                             </div>
                         </li>
                     </NavLink>

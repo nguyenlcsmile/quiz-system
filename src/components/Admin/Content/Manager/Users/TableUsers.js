@@ -5,37 +5,48 @@ const TableUsers = (props) => {
     const { listUsers } = props;
 
     return (
-
-        <Table bordered className="text-center">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th className='col-4'>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {listUsers && listUsers.length > 0 &&
-                    listUsers.map((user, index) => {
-                        return (
-                            <tr key={index}>
-                                <td>{user.id}</td>
-                                <td>{user.username}</td>
-                                <td>{user.email}</td>
-                                <td>{user.role}</td>
-                                <td>
-                                    <Button variant="secondary mx-2">View</Button>{' '}
-                                    <Button variant="warning mx-2">Update</Button>{' '}
-                                    <Button variant="danger mx-2">Delete</Button>{' '}
-                                </td>
-                            </tr>
-                        )
-                    })
-                }
-            </tbody>
-        </Table>
+        <section>
+            <div className="row">
+                <div className="card">
+                    <div className='card-content'>
+                        <div className="card-body">
+                            <div className="table-responsive">
+                                <table className="table table-lg mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th width="20%">USERNAME</th>
+                                            <th width="40%">EMAIL</th>
+                                            <th width="10%">ROLE</th>
+                                            <th width="20%">ACTION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {listUsers && listUsers.length > 0 &&
+                                            listUsers.map((user, index) => {
+                                                return (
+                                                    <tr key={index}>
+                                                        <td className="text-bold-500">{user.id}</td>
+                                                        <td>{user.username}</td>
+                                                        <td className="text-bold-500">{user.email}</td>
+                                                        <td className="text-bold-500">{user.role}</td>
+                                                        <td className="text-bold-500 d-flex">
+                                                            <button className='btn btn-secondary'>View</button>
+                                                            <button className='btn btn-warning mx-4'>Update</button>
+                                                            <button className='btn btn-danger'>Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            })
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     )
 }
 
