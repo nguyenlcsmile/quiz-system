@@ -74,7 +74,7 @@ const SideBar = (props) => {
                             </div>
                         </li>
                     </NavLink>
-                    <NavLink to='/'>
+                    <NavLink to='/register'>
                         <li className="sidebar-item">
                             <div className="sidebar-link">
                                 <GiArchiveRegister className="icon-sidebar" />

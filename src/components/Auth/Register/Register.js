@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { FaUserAlt, FaRegEyeSlash, FaRegEye } from 'react-icons/fa';
+import { postRegister } from '../../../services/apiServices';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const [email, setEmail] = useState("");
@@ -15,8 +17,36 @@ const Register = () => {
 
     const navigate = useNavigate();
 
-    const handleRegister = () => {
-        alert('me')
+    const validateEmail = (email) => {
+        return email.match(
+            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+
+    const handleRegister = async () => {
+        const isValidEmail = validateEmail(email);
+        console.log(isValidEmail);
+
+        if (!isValidEmail) {
+            toast.error('Invalid email')
+            return;
+        }
+
+        if (!password) {
+            toast.error('Invalid password')
+            return;
+        }
+
+        let data = await postRegister(email, username, password);
+
+        if (data && data.EC === 0) {
+            navigate('/');
+            toast.success(data.EM);
+        }
+
+        if (data && data.EC !== 0) {
+            toast.error(data.EM);
+        }
     }
 
     return (
@@ -63,7 +93,7 @@ const Register = () => {
                                                         Password
                                                     </label>
 
-                                                    {showPassword ?
+                                                    {!showPassword ?
                                                         <span className='eye-icon'
                                                             onClick={() => setShowPassword(!showPassword)}
                                                         >
@@ -78,7 +108,7 @@ const Register = () => {
                                                     }
 
                                                     <input className="form-control form-control-lg"
-                                                        type={showPassword ? "password" : "text"} name="password"
+                                                        type={!showPassword ? "password" : "text"} name="password"
                                                         placeholder="Enter your password"
                                                         value={password}
                                                         onChange={(event) => setPassword(event.target.value)} />
@@ -98,10 +128,10 @@ const Register = () => {
                                                 </div>
 
                                                 <div className="text-center mt-2">
-                                                    <NavLink to="/" className="btn btn-lg btn-primary"
+                                                    <span className="btn btn-lg btn-primary"
                                                         onClick={() => handleRegister()}>
                                                         Sign up
-                                                    </NavLink>
+                                                    </span>
                                                 </div>
                                                 <div className='back-home text-center'>
                                                     <span onClick={() => { navigate('/') }}>

@@ -28,12 +28,12 @@
 
     .container {
         h1 {
-            font-size: 3.6rem;
+            font-size: 3rem;
             padding: 0.5rem 0;
         }
 
         p {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             padding: 1rem 0;
         }
         .card {
@@ -42,7 +42,7 @@
             }
 
             form {
-                margin-top: 1.4rem;
+                margin-top: 0.2rem;
                 padding: 0 2rem;
 
                 div {
@@ -81,6 +81,7 @@
                         background-color: #6f5de7;
                         border: none;
                         border-radius: 2rem;
+                        margin-top: 1.4rem;
                         padding: 1rem 0;
 
                         &:hover {

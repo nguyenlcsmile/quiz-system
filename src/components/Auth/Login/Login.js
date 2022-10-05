@@ -5,6 +5,8 @@ import './Login.scss';
 import { useNavigate } from 'react-router-dom';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
+import { postLogin } from '../../../services/apiServices';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -12,8 +14,30 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const handleLogin = () => {
-        // alert('me')
+    const validateEmail = (email) => {
+        return email.match(
+            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+
+    const handleLogin = async () => {
+        // validate
+        const isValidEmail = validateEmail(email);
+
+        if (!isValidEmail) {
+            toast.error('Invalid email')
+            return;
+        }
+
+        let data = await postLogin(email, password);
+        if (data && data.EC === 0) {
+            navigate('/');
+            toast.success(data.EM);
+        }
+
+        if (data && data.EC !== 0) {
+            toast.error(data.EM);
+        }
     }
 
     return (
@@ -69,10 +93,10 @@ const Login = () => {
                                                     </small>
                                                 </div>
                                                 <div className="text-center mt-2">
-                                                    <NavLink to="/" className="btn btn-lg btn-primary"
+                                                    <span className="btn btn-lg btn-primary"
                                                         onClick={() => handleLogin()}>
                                                         Sign in
-                                                    </NavLink>
+                                                    </span>
                                                 </div>
                                                 <div className='back-home text-center'>
                                                     <span onClick={() => { navigate('/') }}>

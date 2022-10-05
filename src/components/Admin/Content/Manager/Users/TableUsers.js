@@ -1,8 +1,6 @@
-import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
 
 const TableUsers = (props) => {
-    const { listUsers, handleViewUser } = props;
+    const { listUsers, handleViewUser, handleDeleteUser, handleUpdateUser } = props;
 
     return (
         <section>
@@ -35,12 +33,23 @@ const TableUsers = (props) => {
                                                                 onClick={() => handleViewUser(user)}>
                                                                 View
                                                             </button>
-                                                            <button className='btn btn-warning mx-4'>Update</button>
-                                                            <button className='btn btn-danger'>Delete</button>
+                                                            <button className='btn btn-warning mx-4'
+                                                                onClick={() => handleUpdateUser(user)}>
+                                                                Update
+                                                            </button>
+                                                            <button className='btn btn-danger'
+                                                                onClick={() => handleDeleteUser(user)}>
+                                                                Delete
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 )
                                             })
+                                        }
+                                        {listUsers && listUsers.length === 0 &&
+                                            <tr>
+                                                <td colSpan={'4'}>Not fault data</td>
+                                            </tr>
                                         }
                                     </tbody>
                                 </table>

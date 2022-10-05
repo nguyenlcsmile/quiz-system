@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './ModalUser.scss';
-import { FcPlus } from 'react-icons/fc';
-import { postCreateNewUser } from '../../../../../services/apiServices';
+import { putUpdateUser } from '../../../../../services/apiServices';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import _ from 'lodash';
 
-const ModalCreateUser = (props) => {
+const ModalUpdateUser = (props) => {
 
-    const { show, setShow, fectchListUsers } = props;
+    const { show, setShow, fectchListUsers, dataUpdate, resetData } = props;
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
@@ -19,14 +19,21 @@ const ModalCreateUser = (props) => {
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (!_.isEmpty(dataUpdate)) {
+            //update state
+            setEmail(dataUpdate.email)
+            setUsername(dataUpdate.username)
+            setRole(dataUpdate.role)
+            if (dataUpdate.image) {
+                setPreviewImage(`data:image/jpeg;base64,${dataUpdate.image}`)
+            }
+        }
+    }, [dataUpdate]);
+
     const handleClose = () => {
         setShow(false);
-        setEmail("");
-        setUsername("");
-        setPassword("");
-        setRole("USER");
-        setImage("");
-        setPreviewImage("");
+        resetData();
     };
 
     const handleUploadImage = (event) => {
@@ -38,26 +45,9 @@ const ModalCreateUser = (props) => {
         }
     }
 
-    const validateEmail = (email) => {
-        return email.match(
-            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        );
-    };
 
-    const handleCreateNewUser = async () => {
-        const isValidEmail = validateEmail(email);
-
-        if (!isValidEmail) {
-            toast.error('Invalid Email');
-            return;
-        }
-
-        if (!password) {
-            toast.error('Invalid Password');
-            return;
-        }
-
-        let data = await postCreateNewUser(email, password, username, role, image);
+    const handleUpdateUser = async () => {
+        let data = await putUpdateUser(dataUpdate.id, username, role, image);
 
         if (data && data.EC === 0) {
             navigate('/admins/manager-users');
@@ -65,8 +55,7 @@ const ModalCreateUser = (props) => {
 
             handleClose();
             // await fectchListUsers();
-            props.setCurrentPage(1);
-            await props.fetchListUsersWithPaginate(1);
+            await props.fetchListUsersWithPaginate(props.currentPage);
         }
 
         if (data && data.EC !== 0) {
@@ -78,20 +67,20 @@ const ModalCreateUser = (props) => {
         <Modal show={show} onHide={handleClose} size="xl" backdrop="static">
             <Modal.Header closeButton>
                 <Modal.Title>
-                    Add new user
+                    Update a user
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <form className="row g-4">
                     <div className="col-md-6">
                         <label className="form-label">Email:</label>
-                        <input type="email" className="form-control" value={email}
-                            onChange={(event) => setEmail(event.target.value)} />
+                        <input type="email" className="form-control"
+                            value={email} disabled />
                     </div>
                     <div className="col-md-6">
                         <label className="form-label">Password:</label>
-                        <input type="password" className="form-control" value={password}
-                            onChange={(event) => setPassword(event.target.value)} />
+                        <input type="password" className="form-control"
+                            value={password} disabled />
                     </div>
                     <div className="col-md-6 p-2">
                         <label className="form-label">Username:</label>
@@ -129,8 +118,8 @@ const ModalCreateUser = (props) => {
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
-                <Button variant="outline-primary" onClick={handleCreateNewUser}>
-                    Create User
+                <Button variant="outline-primary" onClick={handleUpdateUser}>
+                    Update User
                 </Button>
             </Modal.Footer>
         </Modal>
@@ -138,4 +127,4 @@ const ModalCreateUser = (props) => {
     );
 }
 
-export default ModalCreateUser;
+export default ModalUpdateUser;

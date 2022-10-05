@@ -8,6 +8,8 @@ import Login from './components/Auth/Login/Login';
 import Register from './components/Auth/Register/Register';
 import App from './App';
 import './App.scss';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = () => {
     return (
@@ -29,6 +31,20 @@ const Layout = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
             </Routes>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            {/* Same as */}
+            <ToastContainer />
         </>
     )
 }
