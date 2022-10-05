@@ -48,6 +48,23 @@
                 div {
                     padding: 0.8rem 0;
 
+                    .loader-icon {
+                        vertical-align: middle;
+                        margin-right: 7px;
+                        top: 2px;
+                        color: #6f5de7;
+                        animation: spin 1s infinite linear;
+                    }
+                
+                    @keyframes spin {
+                        from {
+                            transform: scale(1) rotate(0deg);
+                        }
+                        to {
+                            transform: scale(1) rotate(360deg);
+                        }
+                    }
+
                     label {
                         font-size: 1.8rem;
                         align-items: center;
@@ -72,6 +89,7 @@
                             font-size: 1.4rem;
                         }
                     }
+
                     .btn-primary {
                         font-size: 2rem;
                         width: 100%;
@@ -79,11 +97,18 @@
                         border: none;
                         border-radius: 2rem;
                         padding: 1rem 0;
+                        margin-top: -3rem;
 
                         &:hover {
                             background-color: #ccc;
                             color: #000;
                         }  
+
+                        &:disabled {
+                            background: #dddddd;
+                            color: #afafaf;
+                            cursor: no-drop;
+                        }
                     }
                 }
 

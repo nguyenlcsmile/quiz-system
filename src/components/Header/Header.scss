@@ -36,16 +36,15 @@
             }
 
             .btn-style {
-                width: 12rem;
+                width: 13rem;
                 height: 4rem;
                 border-radius: 2rem;
                 color: #fff;
                 background-color: var(--primary-color);
                 text-transform: capitalize;
-                font-size: 1.6rem;
+                font-size: 1.8rem;
 
                 &:first-child {
-                    margin-right: 2rem;
                     margin-left: 2rem;
                 }
 
@@ -67,6 +66,46 @@
                     color: #fff;
                     background-color: var(--primary-color);
                     text-transform: capitalize;
+                }
+            }
+
+            .btn-setting {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                span {
+                    font-size: 2rem;
+                    margin-left: 1rem;
+                }
+                .arrow-icons {
+                    margin-left: 0.5rem;
+                }
+            }
+
+            .dropdown-menu {
+                margin-left: 2rem;
+                width: 9%;
+                border-radius: 1rem;
+                background-color: rgba(183, 171, 255, 0.5);
+                
+                .items {
+                    margin: 0 1rem;
+                    align-items: center;
+                    color: #000;
+                    font-size: 1.5rem;
+                    padding: 1rem 1rem;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #6f5de7; 
+                        color: #fff;
+                        border-radius: 1rem;
+                    }
+
+                    .icons {
+                        margin-right: 0.8rem;
+                        font-size: 1.6rem;
+                    }
                 }
             }
         }

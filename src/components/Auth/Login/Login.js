@@ -7,12 +7,17 @@ import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { postLogin } from '../../../services/apiServices';
 import { toast } from 'react-toastify';
+import { ImSpinner10 } from 'react-icons/im';
+import { useDispatch } from 'react-redux';
+import { doLogin } from '../../../redux/action/userAction';
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const validateEmail = (email) => {
         return email.match(
@@ -29,14 +34,20 @@ const Login = () => {
             return;
         }
 
+        setIsLoading(true);
+
         let data = await postLogin(email, password);
+
         if (data && data.EC === 0) {
-            navigate('/');
+            dispatch(doLogin(data));
             toast.success(data.EM);
+            setIsLoading(false);
+            navigate('/');
         }
 
         if (data && data.EC !== 0) {
             toast.error(data.EM);
+            setIsLoading(false);
         }
     }
 
@@ -93,10 +104,13 @@ const Login = () => {
                                                     </small>
                                                 </div>
                                                 <div className="text-center mt-2">
-                                                    <span className="btn btn-lg btn-primary"
-                                                        onClick={() => handleLogin()}>
+                                                    <button className="btn btn-lg btn-primary"
+                                                        onClick={() => handleLogin()}
+                                                        disabled={isLoading}
+                                                    >
+                                                        {isLoading === true && <ImSpinner10 className="loader-icon" />}
                                                         Sign in
-                                                    </span>
+                                                    </button>
                                                 </div>
                                                 <div className='back-home text-center'>
                                                     <span onClick={() => { navigate('/') }}>

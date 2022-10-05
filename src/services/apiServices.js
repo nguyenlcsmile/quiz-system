@@ -5,7 +5,11 @@ const getAllUsers = () => {
 }
 
 const postLogin = (email, password) => {
-    return axios.post('api/v1/login', { email, password })
+    return axios.post('api/v1/login', { email, password, delay: 3000 })
+}
+
+const postLogout = (email, refresh_token) => {
+    return axios.post('api/v1/logout', { email, refresh_token });
 }
 
 const postRegister = (email, username, password) => {
@@ -44,5 +48,5 @@ const getUserWithPaginate = (page, limit) => {
 export {
     getAllUsers, postLogin, postRegister,
     putUpdateUser, postCreateNewUser, deleteUser,
-    getUserWithPaginate
+    getUserWithPaginate, postLogout
 }

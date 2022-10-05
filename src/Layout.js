@@ -10,6 +10,7 @@ import App from './App';
 import './App.scss';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ListQuiz from "./components/User/ListQuiz";
 
 const Layout = () => {
     return (
@@ -17,7 +18,7 @@ const Layout = () => {
             <Routes>
                 <Route path="/" element={<App />} >
                     <Route index element={<HomePage />} />
-                    <Route path="users" element={<User />} />
+                    <Route path="users" element={<ListQuiz />} />
                     <Route path="contact" element={<User />} />
                 </Route>
 
