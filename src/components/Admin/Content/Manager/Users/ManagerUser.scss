@@ -2,6 +2,8 @@
 .admin-content {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    
     .manager-title {
         .row {
             h3 {

@@ -27,14 +27,18 @@ const HomePage = () => {
                             Create a typeform instead—and make everyone happy.
                         </p>
                         {/* <div className="input-group mt-3"> */}
-                        <div className="input-group-text"
-                            onClick={() => { navigate('/users') }}>
-                            {isAuthenticated ?
-                                "Doing quiz now" :
-                                "Get started - it's free"
-                            }
-                        </div>
-                        {/* </div> */}
+                        {isAuthenticated ?
+                            <div className="input-group-text"
+                                onClick={() => { navigate('/users') }}>
+                                Doing quiz now
+                            </div>
+                            :
+                            <div className="input-group-text"
+                                onClick={() => { navigate('/login') }}>
+                                Get's started. It's free
+                            </div>
+                        }
+
                     </div>
                     {/* </div> */}
                 </section>

@@ -4,7 +4,6 @@ import './User.scss';
 const User = () => {
     return (
         <div class="user-container">
-
         </div>
     )
 }
