@@ -55,10 +55,9 @@ const ManagerQuiz = () => {
                     <h3>Manager Quizzes</h3>
                 </div>
             </div>
-
             <div className='manager-quiz-content'>
                 <Accordion defaultActiveKey="0">
-                    <Accordion.Item eventKey="0">
+                    <Accordion.Item eventKey="1">
                         <Accordion.Header>Add new quiz</Accordion.Header>
                         <Accordion.Body>
                             <div className="add-new">
