@@ -1,0 +1,88 @@
+.admin-content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .manager-title {
+        .row {
+            h3 {
+                display: flex;
+                flex: 1;
+                font-size: 2.4rem;
+                font-weight: 700;
+                padding: 2rem 2rem;
+                line-height: 2.0;
+                align-items: center;
+                color: #25396f;
+                margin: 1rem 2rem;
+            }
+        }
+    }
+
+    .manager-quiz-content {
+        padding: 0 4rem;
+
+        .accordion-button {
+            font-size: 2rem;
+            background-color: #435ebe;
+            color: #fff;
+        }
+
+        .add-new {
+            .form-floating {
+                font-size: 1.2rem;
+                input {
+                    padding: 2.2rem 1rem;
+                    font-size: 1.6rem;
+                }
+
+                label {
+                    margin-top: -0.5rem;
+                }
+            }
+
+            .form-control {
+                .card-header  {
+                    font-size: 1.2rem;
+                    .card-title {
+                        margin-bottom: 0;
+                    }
+                }
+
+                .card-body {
+                    display: flex;
+                    font-size: 1.6rem;
+                    width: 100%;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px dashed #ccc;
+                    // height: 10rem;
+                    cursor: pointer;
+                    padding: 0;
+
+                    img {
+                       max-width: 15%;
+                       max-height: 100%;
+                    }
+                }
+            }
+
+            .btn {
+                font-size: 2rem;
+                padding: 0.4rem 8rem;
+            }
+        }
+    }
+
+    .table-quiz {
+        padding: 3rem 4.6rem;
+
+        section {
+            font-size: 1.4rem;
+
+            .btn {
+                font-size: 1.4rem;
+            }
+        }
+    }
+}

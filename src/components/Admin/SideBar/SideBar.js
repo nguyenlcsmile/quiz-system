@@ -32,7 +32,7 @@ const SideBar = (props) => {
                         <li className="sidebar-item">
                             <div className="sidebar-link">
                                 <RiDashboardLine className="icon-sidebar" />
-                                <span>Trang chủ</span>
+                                <span>Dashboard</span>
                             </div>
                         </li>
                     </NavLink>
@@ -41,7 +41,7 @@ const SideBar = (props) => {
                             <div className="sidebar-link">
                                 <MdManageAccounts className="icon-sidebar" />
                                 <span>
-                                    Quản lý người dùng
+                                    Manager Users
                                 </span>
                             </div>
                         </li>
@@ -50,7 +50,9 @@ const SideBar = (props) => {
                         <li className="sidebar-item">
                             <div className="sidebar-link">
                                 <AiFillFolderOpen className="icon-sidebar" />
-                                <span>Quản lý bài thi</span>
+                                <span>
+                                    Manager Quizzes
+                                </span>
                             </div>
                         </li>
                     </NavLink>
@@ -58,7 +60,9 @@ const SideBar = (props) => {
                         <li className="sidebar-item">
                             <div className="sidebar-link">
                                 <MdQuiz className="icon-sidebar" />
-                                <span>Quản lý câu hỏi</span>
+                                <span>
+                                    Manager Questions
+                                </span>
                             </div>
                         </li>
                     </NavLink>

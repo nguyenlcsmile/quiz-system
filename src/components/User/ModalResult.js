@@ -26,7 +26,7 @@ const ModalResult = (props) => {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="outline-primary" onClick={handleClose}>
-                    Show Result
+                    Show Answers
                 </Button>
                 <Button variant="secondary" onClick={handleClose}>
                     Close

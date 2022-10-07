@@ -1,5 +1,4 @@
 import './ManagerUser.scss';
-import TableUsers from './TableUsers';
 import { getAllUsers, getUserWithPaginate } from '../../../../../services/apiServices';
 import { useEffect, useState } from 'react';
 import ModalCreateUser from './ModalCreateUser';
@@ -71,7 +70,7 @@ function Manager() {
         <>
             <div className="manager-title">
                 <div className='row'>
-                    <h3>Quản lý người dùng</h3>
+                    <h3>Manager Users</h3>
                 </div>
             </div>
 

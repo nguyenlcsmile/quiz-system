@@ -4,15 +4,18 @@ import 'boxicons/css/boxicons.min.css';
 import './Admin.scss';
 import SideBar from "../SideBar/SideBar";
 import Header from "../Header/Header"
+import PerfectScrollbar from 'react-perfect-scrollbar'
 
 const Admin = () => {
     const [showSideBarAdmin, setShowSideBarAdmin] = useState(false);
 
     return (
+
         <div className="admin-container">
             <div className="sidebar-admin" style={{ display: showSideBarAdmin ? 'none' : 'flex' }}>
                 <SideBar />
             </div>
+
             <div className="admin-main">
                 <div className="admin-header">
                     <Header
@@ -21,10 +24,12 @@ const Admin = () => {
                     />
                 </div>
                 <div className="admin-content">
-
-                    <Outlet />
+                    <PerfectScrollbar>
+                        <Outlet />
+                    </PerfectScrollbar>
                 </div>
             </div>
+
         </div>
     )
 }
