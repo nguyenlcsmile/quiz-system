@@ -12,7 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ListQuiz from "./components/User/ListQuiz";
 import DetailQuiz from "./components/User/DetailQuiz";
-import ManagerQuiz from "./components/Admin/Content/Manager/Quizs/ManagerQuiz";
+import ManagerQuiz from "./components/Admin/Content/Manager/Quizzes/ManagerQuiz";
 import ManagerQuestion from "./components/Admin/Content/Manager/Questions/ManagerQuestion";
 
 const NotFound = () => {

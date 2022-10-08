@@ -1,0 +1,12 @@
+.assign-quiz-containter {
+    display: flex;
+    width: 100%;
+    gap: 4rem;
+
+    .select-quiz-content {
+        flex: 1;
+    }
+    .select-user-content {
+        flex: 1;
+    }
+}

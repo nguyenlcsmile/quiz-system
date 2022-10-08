@@ -1,0 +1,118 @@
+.admin-content {
+    .manager-questions-content {
+        padding: 0 4rem;
+
+        .selected-quiz {
+            width: 50%;
+            font-size: 1.6rem;
+        }
+
+        .questions-content {
+            .questions-main {
+                display: flex;
+                align-items: center;
+
+                .form-floating {
+                    width: 50%;
+                    input {
+                        padding: 3.4rem 1rem;
+                        font-size: 2rem;
+                    }
+                    label {
+                        font-size: 1.4rem;
+                    }
+                }
+
+                .questions-image {
+                    margin: 0 2rem;
+                    font-size: 3rem;
+                    cursor: pointer;
+                    color: #9068ff;
+
+                    &:hover {
+                        color: #4400ff;
+                    }
+
+                    span {
+                        margin-left: 1rem;
+                        font-size: 1.6rem;
+                    }
+                }
+
+
+                .btn-add-question {
+                    margin-left: 1rem;
+                    font-size: 3rem;
+
+                    .icon-add {
+                        color: #2596ff;
+                        cursor: pointer;
+        
+                        &:hover {
+                            color: #0989ff;
+                        }
+                    }
+
+                    .icon-remove {
+                        margin-left: 1rem;
+                        color: #e8771c;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: #ff7608;
+                        }
+                    }
+                }
+            }
+
+            .answers-main {
+                display: flex;
+                align-items: center;
+                padding: 0.4rem 4rem;
+                
+                .form-check {
+                    .form-check-input {
+                        padding: 1rem;
+                        margin-right: 2rem;
+                    }
+                }
+                
+                .form-floating {
+                    width: 50%;
+                    input {
+                        padding: 3.4rem 1rem;
+                        font-size: 2rem;
+                    }
+                    label {
+                        font-size: 1.4rem;
+                    }
+                }
+
+                .btn-add-answer {
+                    margin-left: 1rem;
+                    font-size: 3rem;
+
+                    .icon-add {
+                        color: #2596ff;
+                        cursor: pointer;
+        
+                        &:hover {
+                            color: #0989ff;
+                        }
+                    }
+
+                    .icon-remove {
+                        margin-left: 0.8rem;
+                        color: #e8771c;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: #ff7608;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

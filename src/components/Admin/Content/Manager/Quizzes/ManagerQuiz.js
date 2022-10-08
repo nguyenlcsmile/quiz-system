@@ -5,6 +5,8 @@ import { useState } from 'react';
 import TableQuiz from './TableQuiz';
 import { toast } from 'react-toastify';
 import { postCreateQuiz } from '../../../../../services/apiServices';
+import QuizQA from './QuizQA';
+import AssignQuiz from './AssignQuiz';
 
 const options = [
     { value: 'EASY', label: 'EASY' },
@@ -57,7 +59,7 @@ const ManagerQuiz = () => {
             </div>
             <div className='manager-quiz-content'>
                 <Accordion defaultActiveKey="0">
-                    <Accordion.Item eventKey="1">
+                    <Accordion.Item eventKey="1" className='mb-4'>
                         <Accordion.Header>Add new quiz</Accordion.Header>
                         <Accordion.Body>
                             <div className="add-new">
@@ -112,15 +114,27 @@ const ManagerQuiz = () => {
                                     </div>
                                 </fieldset>
                             </div>
+
+                            <div className='table-quiz'>
+                                <TableQuiz
+                                    isFetchQuiz={isFetchQuiz}
+                                />
+                            </div>
+                        </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="2" className='mb-4'>
+                        <Accordion.Header>Manager Update Q/A</Accordion.Header>
+                        <Accordion.Body>
+                            <QuizQA />
+                        </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="3">
+                        <Accordion.Header>Assign Quiz for User</Accordion.Header>
+                        <Accordion.Body>
+                            <AssignQuiz />
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
-            </div>
-
-            <div className='table-quiz mb-5'>
-                <TableQuiz
-                    isFetchQuiz={isFetchQuiz}
-                />
             </div>
         </>
     )
