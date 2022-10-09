@@ -4,8 +4,11 @@ import Modal from 'react-bootstrap/Modal';
 import '../Users/ModalUser.scss';
 import { toast } from 'react-toastify';
 import { deteleQuizForAdmin } from '../../../../../services/apiServices';
+import { useDispatch } from 'react-redux';
+import { doFetchQuiz } from '../../../../../redux/action/fetchAction';
 
 const ModalDeleteQuiz = (props) => {
+    const dispatch = useDispatch();
 
     const { show, setShow, dataDelete, fetchQuiz } = props;
 
@@ -21,6 +24,7 @@ const ModalDeleteQuiz = (props) => {
             toast.success(data.EM);
             handleClose();
             await fetchQuiz();
+            dispatch(doFetchQuiz());
         }
 
         if (data && data.EC !== 0) {

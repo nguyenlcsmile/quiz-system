@@ -123,7 +123,7 @@ const DetailQuiz = () => {
 
     return (
         <>
-            <div className="detail-quiz-container container p-5 mt-5">
+            <div className="detail-quiz-container container p-5 mt-2">
                 <div className="row">
                     <div className="col-xl-8">
                         <div className="card">

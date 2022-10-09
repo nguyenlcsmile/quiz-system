@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 import { postCreateQuiz, postQuestionsForQuiz } from '../../../../../services/apiServices';
 import QuizQA from './QuizQA';
 import AssignQuiz from './AssignQuiz';
+import { useDispatch } from 'react-redux';
+import { doFetchQuiz } from '../../../../../redux/action/fetchAction';
 
 const options = [
     { value: 'EASY', label: 'EASY' },
@@ -15,12 +17,13 @@ const options = [
 ];
 
 const ManagerQuiz = () => {
+    const dispatch = useDispatch();
+
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [type, setType] = useState("");
     const [image, setImage] = useState(null);
     const [previewImage, setPreviewImage] = useState("");
-    const [isFetchQuiz, setIsFetchQuiz] = useState(false);
 
     const handleUploadImage = (event) => {
         if (event.target && event.target.files && event.target.files[0]) {
@@ -42,15 +45,15 @@ const ManagerQuiz = () => {
 
             let resQ = await postQuestionsForQuiz(res.DT.id, 'desc', null)
             if (resQ && resQ.EC === 0) {
-                toast.success(res.EM);
+                // toast.success(res.EM);
+                setName("");
+                setDescription("");
+                setImage(null);
+                setType("");
+                setPreviewImage("");
             }
+            dispatch(doFetchQuiz());
 
-            setName("");
-            setDescription("");
-            setImage(null);
-            setType("");
-            setPreviewImage("")
-            setIsFetchQuiz(!isFetchQuiz);
         } else {
             toast.error(res.EM)
         }
@@ -122,14 +125,12 @@ const ManagerQuiz = () => {
                             </div>
 
                             <div className='table-quiz'>
-                                <TableQuiz
-                                    isFetchQuiz={isFetchQuiz}
-                                />
+                                <TableQuiz />
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="2" className='mb-4'>
-                        <Accordion.Header>Manager Update Q/A</Accordion.Header>
+                        <Accordion.Header>Manager Create&Update Questions/Anwsers</Accordion.Header>
                         <Accordion.Body>
                             <QuizQA />
                         </Accordion.Body>

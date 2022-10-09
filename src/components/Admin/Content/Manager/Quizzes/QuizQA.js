@@ -14,8 +14,10 @@ import {
 }
     from '../../../../../services/apiServices';
 import { toast } from 'react-toastify';
+import { useSelector } from "react-redux";
 
 const QuizQA = () => {
+    const isFetch = useSelector(state => state.fetchQuiz.isFetch);
 
     const [selectedQuiz, setSelectedQuiz] = useState({});
     const [isPreviewImage, setIsPreviewImage] = useState(false);
@@ -26,29 +28,14 @@ const QuizQA = () => {
         }
     );
 
-    const initDataQuestions = [
-        {
-            id: uuidv4(),
-            description: '',
-            imageFile: '',
-            imageName: '',
-            answers: [
-                {
-                    id: uuidv4(),
-                    description: '',
-                    isCorrect: false
-                }
-            ]
-        }
-    ]
-
     const [questions, setQuestions] = useState([]);
     const [listQuiz, setListQuiz] = useState([]);
 
     useEffect(() => {
         fetchQuiz();
         fetchQAForQuiz();
-    }, [selectedQuiz]);
+    }, [isFetch, selectedQuiz]);
+
 
     const fetchQuiz = async () => {
         let res = await getQuizbyAdmin();
@@ -74,7 +61,6 @@ const QuizQA = () => {
     }
 
     const handleUploadImage = (event, questionId) => {
-        console.log(questionId);
         let questionsClone = _.cloneDeep(questions);
         let index = questionsClone.findIndex(question => question.id === questionId);
 
@@ -141,9 +127,26 @@ const QuizQA = () => {
             if (index > -1) {
                 let res = await postQuestionsForQuiz(selectedQuiz.value, questionsClone[index].description, questionsClone[index].imageFile);
                 if (res && res.EC === 0) {
-                    questionsClone.push(res.DT);
-                    toast.success(res.EM);
-                    fetchQAForQuiz();
+                    let question = {
+                        id: res.DT.id,
+                        description: '',
+                        imageFile: '',
+                        imageName: '',
+                        answers: []
+                    };
+                    let a = await postAnswersForQuestion('desc', false, +res.DT.id)
+                    if (a && a.EC === 0) {
+                        question.answers = [
+                            {
+                                id: a.DT.id,
+                                description: '',
+                                isCorrect: false
+                            }
+                        ];
+                        questionsClone.push(question);
+                        setQuestions(questionsClone);
+                        toast.success(res.EM + a.EM);
+                    }
                 }
             }
         }
@@ -161,7 +164,7 @@ const QuizQA = () => {
                 if (res && res.EC === 0) {
                     const newAnswer = {
                         id: res.DT.id,
-                        description: res.DT.description,
+                        description: '',
                         isCorrect: res.DT.correct_answer
                     }
 
@@ -234,7 +237,7 @@ const QuizQA = () => {
                 question.imageFile);
 
             for (const answer of question.answers) {
-                console.log(answer.id);
+                // console.log(answer.id);
                 if (+answer.id === 0) {
                     await postAnswersForQuestion(answer.description, answer.isCorrect, q.DT.id)
                 } else {
@@ -242,6 +245,8 @@ const QuizQA = () => {
                 }
             }
         }
+
+        toast.success("Save Questions Success");
     }
 
 
@@ -259,7 +264,7 @@ const QuizQA = () => {
                 </div>
 
                 <div className='questions-content'>
-                    <label className='mb-2 fs-2'>Update Questions:</label>
+                    <label className='mb-2 fs-2 mt-3'>Update/Create Questions:</label>
 
                     {questions && questions.length > 0 &&
                         questions.map((question, index) => {

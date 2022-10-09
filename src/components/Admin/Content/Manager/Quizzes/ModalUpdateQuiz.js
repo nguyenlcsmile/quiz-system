@@ -6,8 +6,11 @@ import { postUpdateQuizForAdmin } from '../../../../../services/apiServices';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import _ from 'lodash';
+import { useDispatch } from 'react-redux';
+import { doFetchQuiz } from '../../../../../redux/action/fetchAction';
 
 const ModalUpdateQuiz = (props) => {
+    const dispatch = useDispatch();
 
     const { show, setShow, dataUpdate, fetchQuiz } = props;
 
@@ -54,6 +57,7 @@ const ModalUpdateQuiz = (props) => {
             toast.success(data.EM);
             handleClose();
             await fetchQuiz();
+            dispatch(doFetchQuiz());
         }
 
         if (data && data.EC !== 0) {

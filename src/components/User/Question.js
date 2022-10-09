@@ -21,7 +21,7 @@ const Question = (props) => {
                     <div className="img-anwser">
                         <img src={`data:image/jpeg;base64,${data.image}`}
                             className="text-center me-1"
-                            alt="Avatar" width="35%" height="20%" />
+                            alt="Avatar" width="20%" height="10%" />
                     </div>
                     :
                     <div className="img-anwser">

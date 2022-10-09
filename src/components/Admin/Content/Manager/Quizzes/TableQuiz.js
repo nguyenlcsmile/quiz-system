@@ -2,8 +2,13 @@ import { useEffect, useState } from "react";
 import { getQuizbyAdmin } from "../../../../../services/apiServices";
 import ModalDeleteQuiz from "./ModalDeleteQuiz";
 import ModalUpdateQuiz from "./ModalUpdateQuiz";
+import { useSelector } from "react-redux";
+import { useDispatch } from 'react-redux';
+import { doFetchQuiz } from '../../../../../redux/action/fetchAction';
 
 const TableQuiz = (props) => {
+    const isFetch = useSelector(state => state.fetchQuiz.isFetch);
+
     const [listQuiz, setListQuiz] = useState([]);
     const [showModalDeleteQuiz, setModalDeleteQuiz] = useState(false);
     const [showModalUpdateQuiz, setShowModalUpdateQuiz] = useState(false);
@@ -12,7 +17,8 @@ const TableQuiz = (props) => {
 
     useEffect(() => {
         fetchQuiz()
-    }, [props.isFetchQuiz]);
+    }, [isFetch]);
+
 
     const fetchQuiz = async () => {
         let res = await getQuizbyAdmin();
