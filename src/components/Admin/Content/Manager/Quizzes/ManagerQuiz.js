@@ -4,7 +4,7 @@ import Select from 'react-select';
 import { useState } from 'react';
 import TableQuiz from './TableQuiz';
 import { toast } from 'react-toastify';
-import { postCreateQuiz } from '../../../../../services/apiServices';
+import { postCreateQuiz, postQuestionsForQuiz } from '../../../../../services/apiServices';
 import QuizQA from './QuizQA';
 import AssignQuiz from './AssignQuiz';
 
@@ -39,6 +39,12 @@ const ManagerQuiz = () => {
         // console.log(res);
         if (res && res.EC === 0) {
             toast.success(res.EM);
+
+            let resQ = await postQuestionsForQuiz(res.DT.id, 'desc', null)
+            if (resQ && resQ.EC === 0) {
+                toast.success(res.EM);
+            }
+
             setName("");
             setDescription("");
             setImage(null);

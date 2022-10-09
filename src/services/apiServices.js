@@ -111,8 +111,34 @@ const getQuestionAnswerForQuiz = (quizId) => {
     return axios.get(`api/v1/quiz-with-qa/${quizId}`);
 }
 
+const putQuestionForQuiz = (questionId, quizId, description, image) => {
+    const data = new FormData();
+    data.append('id', questionId);
+    data.append('quiz_id', quizId);
+    data.append('description', description);
+    data.append('questionImage', image);
+
+    return axios.put('api/v1/question', data)
+}
+
+const putAnwserForQuiz = (description, correct_answer, questionId, answerId) => {
+    const data = new FormData();
+    data.append('description', description);
+    data.append('correct_answer', correct_answer);
+    data.append('question_id', questionId);
+    data.append('answer_id', answerId);
+
+    return axios.put('api/v1/answer', data)
+}
+
 const deleteAnwser = (anwserId) => {
-    return axios.delete(`api/v1/answer/${anwserId}`)
+    return axios.delete(`api/v1/answer/${anwserId}`);
+}
+
+const deleteQuestion = (id, quizId) => {
+    return axios.delete('api/v1/question', {
+        data: { id, quizId }
+    });
 }
 
 export {
@@ -122,5 +148,6 @@ export {
     getDataQuiz, postSubmitQuiz, getQuizbyAdmin,
     postCreateQuiz, deteleQuizForAdmin, postUpdateQuizForAdmin,
     postQuestionsForQuiz, postAnswersForQuestion, postAssignQuiz,
-    getQuestionAnswerForQuiz, deleteAnwser
+    getQuestionAnswerForQuiz, deleteAnwser, deleteQuestion,
+    putQuestionForQuiz, putAnwserForQuiz
 }
