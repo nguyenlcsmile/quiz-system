@@ -6,6 +6,7 @@ import _ from "lodash";
 import Question from "./Question";
 import { postSubmitQuiz } from "../../services/apiServices";
 import ModalResult from "./ModalResult";
+import CountDown from "./Content/CountDown";
 
 const DetailQuiz = () => {
     const params = useParams();
@@ -44,6 +45,8 @@ const DetailQuiz = () => {
                         item.answers.isSelected = false;
                         anwsers.push(item.answers)
                     })
+                    // anwsers = _.orderBy(anwsers, ['id'], ['asc']);
+
                     return { questionId: key, anwsers, questionDescription, image }
                 })
                 .value()
@@ -86,7 +89,6 @@ const DetailQuiz = () => {
     }
 
     const handleSubmitQuiz = async () => {
-
         let payload = {
             quizId: +quizId,
             answers: []
@@ -171,7 +173,21 @@ const DetailQuiz = () => {
                     <div className="col-xl-4">
                         <div className="card">
                             <div className="card-header">
-                                <h5 className="card-title mb-0">Count down</h5>
+                                <h5 className="card-title mb-0">Time</h5>
+                            </div>
+                            <div className="card-body text-center fs-1">
+                                <CountDown
+                                    dataQuiz={dataQuiz.map((question, indexQ) => {
+                                        const classAnwser = ['anwser']
+                                        let isAnwser = question.anwsers.find(anwser => anwser.isSelected === true);
+                                        if (isAnwser) classAnwser.push('selected')
+                                        if (indexQ === index) classAnwser.push('clicked')
+                                        return new Object({ ...question, classAnwser: classAnwser.join(' ') });
+                                    })}
+                                    handleSubmitQuiz={handleSubmitQuiz}
+                                    setIndex={setIndex}
+                                    index={index}
+                                />
                             </div>
                         </div>
                     </div>

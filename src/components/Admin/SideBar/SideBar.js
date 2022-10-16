@@ -36,7 +36,7 @@ const SideBar = (props) => {
                             </div>
                         </li>
                     </NavLink>
-                    <NavLink to='/admins/manager-users'>
+                    <NavLink to='/admins/manage-users'>
                         <li className="sidebar-item">
                             <div className="sidebar-link">
                                 <MdManageAccounts className="icon-sidebar" />
@@ -46,7 +46,7 @@ const SideBar = (props) => {
                             </div>
                         </li>
                     </NavLink>
-                    <NavLink to='/admins/manager-quizs'>
+                    <NavLink to='/admins/manage-quizzes'>
                         <li className="sidebar-item">
                             <div className="sidebar-link">
                                 <AiFillFolderOpen className="icon-sidebar" />
@@ -56,7 +56,7 @@ const SideBar = (props) => {
                             </div>
                         </li>
                     </NavLink>
-                    <NavLink to='/admins/manager-questions'>
+                    <NavLink to='/admins/manage-questions'>
                         <li className="sidebar-item">
                             <div className="sidebar-link">
                                 <MdQuiz className="icon-sidebar" />

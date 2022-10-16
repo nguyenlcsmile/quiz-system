@@ -14,6 +14,7 @@ import ListQuiz from "./components/User/ListQuiz";
 import DetailQuiz from "./components/User/DetailQuiz";
 import ManagerQuiz from "./components/Admin/Content/Manager/Quizzes/ManagerQuiz";
 import ManagerQuestion from "./components/Admin/Content/Manager/Questions/ManagerQuestion";
+import PrivateRoute from "./routes/PrivateRoute";
 
 const NotFound = () => {
     return (
@@ -28,21 +29,30 @@ const Layout = () => {
             <Routes>
                 <Route path="/" element={<App />} >
                     <Route index element={<HomePage />} />
-                    <Route path="users" element={<ListQuiz />} />
+                    <Route path="users" element={
+                        <PrivateRoute>
+                            <ListQuiz />
+                        </PrivateRoute>
+                    } />
                     <Route path="contact" element={<User />} />
                 </Route>
 
                 <Route path="/quiz/:id" element={<DetailQuiz />} />
 
-                <Route path="/admins" element={<Admin />} >
-                    {/* <Route index element={<Admin />} /> */}
+                <Route path="/admins" element={
+                    <PrivateRoute>
+                        <Admin />
+                    </PrivateRoute>
+                }>
                     <Route path='dashboard' element={<Dashboard />} />
-                    <Route path='manager-users' element={<ManagerUser />} />
-                    <Route path='manager-quizs' element={<ManagerQuiz />} />
-                    <Route path='manager-questions' element={<ManagerQuestion />} />
+                    <Route path='manage-users' element={<ManagerUser />} />
+                    <Route path='manage-quizzes' element={<ManagerQuiz />} />
+                    <Route path='manage-questions' element={<ManagerQuestion />} />
                 </Route>
+
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+
                 <Route path="*" element={<NotFound />} />
             </Routes>
 

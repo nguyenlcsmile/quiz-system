@@ -104,7 +104,7 @@ const Login = () => {
                                                     </small>
                                                 </div>
                                                 <div className="text-center mt-2">
-                                                    <button className="btn btn-lg btn-primary"
+                                                    <button type="submit" className="btn btn-lg btn-primary"
                                                         onClick={() => handleLogin()}
                                                         disabled={isLoading}
                                                     >
